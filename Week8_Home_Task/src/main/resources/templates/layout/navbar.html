@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(21,97,69)" xmlns:th= "http://www.thymeleaf.org">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{'/'}" style="color: white; font-weight: bold">ALL E-SHOP</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div  id="navbarSupportedContent" style="float: right">
+            <ul class="navbar-nav mr-auto" >
+                <li class="nav-item dropdown" >
+                    <a class="btn nav-link dropdown-toggle" th:href="@{'#'}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: white;">
+                        Language
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="?lng=en">ENG</a>
+                        <a class="dropdown-item" href="?lng=ru">RUS</a>
+                        <a class="dropdown-item" href="?lng=kz">KAZ</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

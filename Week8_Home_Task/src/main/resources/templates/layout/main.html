@@ -1,0 +1,21 @@
+<html xmlns:th= "http://www.thymeleaf.org"
+      xmlns:layout = "http://ultraq.net.nz/thmeleaf/layout">
+    <head th:insert="~{layout/bootstrap_links}">
+        <title>Index</title>
+    </head>
+    <body>
+
+        <div th:insert="~{layout/navbar}"></div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3" th:insert="~{layout/menu}"></div>
+
+                <div class="col-sm-9" layout:fragment = "site_content"> </div>
+            </div>
+        </div>
+    </body>
+    <footer style="background-color: rgb(53, 56, 57); height: 70px" class="mt-3">
+        <h6 class="text-center pt-4" style="color: white">Copyright (C) All E-Shop 2020</h6>
+    </footer>
+</html>

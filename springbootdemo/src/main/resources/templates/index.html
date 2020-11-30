@@ -1,0 +1,130 @@
+<html lang="en" xmlns:th= "http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(47, 143, 158)">
+        <a class="navbar-brand" th:href="@{'/'}"style="font-weight:bold">Task Manager</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">All students</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <form th:action="@{'/filter'}" method="get">
+            <div class="form-row">
+                <div class="col-3">
+                    <label>Name : </label>
+                    <input type="text" class="form-control" placeholder="Enter name to search" name="name">
+                </div>
+                <div class="col-3">
+                    <label>Deadline from : </label>
+                    <input type="date" class="form-control" name="date_from">
+                </div>
+                <div class="col-3">
+                    <label>Deadline to :</label>
+                    <input type="date" class="form-control" name="iin">
+                </div>
+
+                <div class="col-2">
+                    <label>Completed: </label>
+                    <select class="custom-select" name="is_completed">
+                        <option selected value="true">YES</option>
+                        <option value="false">NO</option>
+                    </select>
+                </div>
+
+                <div class="col-1">
+                    <button class="btn btn-md" style="margin-top: 32px; color: white; background-color: rgb(47, 143, 158);">FILTER</button>
+                </div>
+            </div>
+        </form>
+
+        <button class="btn" style="background-color: rgb(47, 143, 158); color: white" data-toggle="modal" data-target="#add">ADD TASK</button>
+
+        <table class="table table-hover">
+            <thead>
+                <tr style="text-align: center">
+                    <th scope="col">ID</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col">Deadline Date</th>
+                    <th scope="col">Is completed</th>
+                    <th scope="col">Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="task: ${tasks}" style="text-align: center;">
+                    <td th:text="${task.getId()}"></td>
+                    <td th:text="${task.getName()}"></td>
+                    <td th:text="${task.getDeadlineDate()}"></td>
+                    <td>
+                        <span th:if="${task.isCompleted() == true}">YES</span>
+                        <span th:unless="${!task.isCompleted() == false}">NO</span>
+                    </td>
+                    <td>
+                        <a class="btn btn-sm" th:href="@{'/details/' + ${task.getId()}}" role="button" style="color: white; background-color: rgb(47, 143, 158)">Details</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <div class="modal fade bd-example-modal-lg" id="add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">ADD NEW TASK</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <form th:action="@{'/add_task'}" method="post">
+                    <div class="container">
+                        <div class="form-group">
+                            <label>Name : </label>
+                            <input type="text" class="form-control" name="name">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Task description : </label>
+                            <textarea class="form-control" rows="3" name="description"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Task deadline : </label>
+                            <input type="date" class="form-control" name="deadline_date">
+                        </div>
+
+                        <div class="form-group">
+                            <select class="custom-select" style="margin-bottom: 25px" name = "is_completed">
+                                <option value="true">YES</option>
+                                <option value="false">NO</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn" style="background-color: rgb(47, 143, 158); color: white" data-toggle="modal" data-target="#add">ADD</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

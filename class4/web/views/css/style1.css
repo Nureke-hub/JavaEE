@@ -1,0 +1,28 @@
+/*.brshka{*/
+/*    background-color: darkslategrey;*/
+/*}*/
+
+.jumbotron{
+    background-color: white;
+    max-height: 200px;
+}
+.h5{
+    color: black;
+}
+
+/*.card{*/
+/*    background-color: rebeccapurple;*/
+/*    color: whitesmoke;*/
+/*    border: 2px solid whitesmoke;*/
+/*}*/
+
+
+.nav1{
+    border: 1px solid black;
+    color: black;
+}
+
+/*.nav2{*/
+/*    background-color: brown;*/
+/*    color: whitesmoke;*/
+/*}*/

@@ -1,0 +1,34 @@
+.brshka{
+    /*background-color: rgb(20,47,115);*/
+}
+
+.jumbotron{
+    background-color: rgb(246,250,251);
+    border: 2px solid whitesmoke;
+    color: black;
+    max-height: 200px;
+}
+
+.card{
+    background-color: rgb(246,250,251);
+    color: black;
+    border: 2px solid whitesmoke;
+}
+
+.h5{
+    color: whitesmoke;
+}
+
+
+.nav1{
+    background-color: rgb(20,47,115);
+    border: 2px solid whitesmoke;
+    color: black;
+}
+
+
+
+.nav2{
+    background-color: rgb(20,47,115);
+    color: whitesmoke;
+}
